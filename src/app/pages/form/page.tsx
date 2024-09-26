@@ -1,18 +1,13 @@
-'use client';
+'use client'; // Força a página a ser renderizada apenas no lado do cliente
 
 import React, { useState, useEffect } from 'react';
-import { useSearchParams, useRouter } from 'next/navigation';
 import { getCourses } from '../../server/courses';
 import Modal from '../../components/Modal';
 import Header from '../../components/Header'; // Importando o Header
 
 const MultiStepForm: React.FC = () => {
-  const searchParams = useSearchParams();
-  const courseId = searchParams.get('courseId'); // Pegando o ID do curso da URL
   const [courseValue, setCourseValue] = useState<number | null>(null);
   const [showModal, setShowModal] = useState(false); // Estado para o modal
-  const router = useRouter(); // Hook para redirecionar
-
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
     nome: '',
@@ -23,15 +18,19 @@ const MultiStepForm: React.FC = () => {
     cvv: '',
   });
 
-  // Função para buscar o valor do curso com base no ID
+  // Captura o courseId da URL manualmente
   useEffect(() => {
+    const searchParams = new URLSearchParams(window.location.search);
+    const courseId = searchParams.get('courseId');
+
+    // Função para buscar o valor do curso com base no ID
     if (courseId) {
       const course = getCourses.find((course) => course.id === courseId);
       if (course) {
         setCourseValue(course.valor);
       }
     }
-  }, [courseId]);
+  }, []);
 
   // Função para ir para o próximo passo
   const nextStep = () => {
@@ -61,7 +60,7 @@ const MultiStepForm: React.FC = () => {
   // Função para fechar o modal e redirecionar para a home
   const handleModalClose = () => {
     setShowModal(false);
-    router.push('/'); // Redireciona para a home
+    window.location.href = '/'; // Redireciona para a home
   };
 
   // Função para renderizar as bolinhas de progresso
