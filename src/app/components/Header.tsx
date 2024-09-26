@@ -1,18 +1,16 @@
 // components/Header.tsx
 "use client";
-import React, { useState, useRef, useEffect } from "react";
+import SearchIcon from "@mui/icons-material/Search";
 import AppBar from "@mui/material/AppBar";
-import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
 import Avatar from "@mui/material/Avatar";
 import Box from "@mui/material/Box";
-import InputBase from "@mui/material/InputBase";
-import SearchIcon from "@mui/icons-material/Search";
-import EmojiNatureIcon from "@mui/icons-material/EmojiNature";
 import Divider from "@mui/material/Divider";
+import IconButton from "@mui/material/IconButton";
+import InputBase from "@mui/material/InputBase";
+import Toolbar from "@mui/material/Toolbar";
+import Typography from "@mui/material/Typography";
 import Link from "next/link";
+import React, { useEffect, useRef, useState } from "react";
 
 interface HeaderProps {
   onSearch?: (searchTerm: string) => void; // Propriedade para passar o valor da busca
@@ -78,7 +76,7 @@ const Header: React.FC<HeaderProps> = ({ onSearch }) => {
                     ml: 1,
                     flex: 1,
                     bgcolor: "white",
-                    borderRadius: 1,
+                    borderRadius: 4,
                     padding: "2px 10px",
                     width: "200px",
                   }}

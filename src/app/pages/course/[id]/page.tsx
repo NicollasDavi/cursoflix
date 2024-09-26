@@ -1,7 +1,7 @@
 // app/course/[id]/page.tsx
 import Link from "next/link";
-import { getCourses } from "./../../../server/courses"; // Pegando os dados dos cursos
 import Header from "./../../../components/Header"; // Importando o Header
+import { getCourses } from "./../../../server/courses"; // Pegando os dados dos cursos
 
 interface CourseDetailsProps {
   params: {
@@ -27,7 +27,7 @@ const CourseDetails = async ({ params }: CourseDetailsProps) => {
       <div className="container mx-auto my-8">
         {/* Título e imagem de fundo do curso */}
         <div
-          className="bg-cover bg-center bg-no-repeat p-6 mb-6 text-white"
+          className="bg-contain bg-center bg-no-repeat p-6 mb-6 text-white"
           style={{
             backgroundImage: `url(${course.imageurl})`, // Imagem de fundo do curso
             height: "400px", // Altura para destacar o curso
