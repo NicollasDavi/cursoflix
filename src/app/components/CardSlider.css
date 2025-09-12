@@ -1,35 +1,72 @@
-/* components/CardSlider.css */
-.custom-arrow-left, .custom-arrow-right {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 1;
-    width: 45px; /* Aumentando o tamanho da seta */
-    height: 45px;
-    background-color: rgba(0, 0, 0, 0.6); /* Escurecendo o fundo */
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+.custom-arrow-left,
+.custom-arrow-right {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  width: 50px;
+  height: 50px;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  opacity: 0;
+  animation: fadeIn 0.6s ease forwards;
+  transition: transform 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.custom-arrow-left:hover,
+.custom-arrow-right:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.custom-arrow-left:active,
+.custom-arrow-right:active {
+  transform: translateY(-50%) scale(0.9);
+}
+
+.custom-arrow-left {
+  left: -55px;
+  animation-delay: 0.2s; 
+}
+.custom-arrow-right {
+  right: -55px;
+  animation-delay: 0.4s; 
+}
+
+.custom-arrow-left::before,
+.custom-arrow-right::before {
+  font-size: 22px;
+  color: white;
+  line-height: 1;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-50%) scale(0.8);
   }
-  
-  .custom-arrow-left:hover, .custom-arrow-right:hover {
-    background-color: rgba(0, 0, 0, 0.8); /* Escurece mais ao passar o mouse */
+  to {
+    opacity: 1;
+    transform: translateY(-50%) scale(1);
   }
-  
-  .custom-arrow-left {
-    left: -50px; /* Ajusta a posição para fora do slider */
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: translateY(-50%) scale(1);
   }
-  
-  .custom-arrow-right {
-    right: -50px; /* Ajusta a posição para fora do slider */
+  50% {
+    transform: translateY(-50%) scale(1.05);
   }
-  
-  .custom-arrow-left::before, .custom-arrow-right::before {
-    font-size: 20px; /* Ajusta o tamanho da seta */
-    color: white; /* Cor branca para a seta */
-    line-height: 1;
-  }
-  
+}
+
+.custom-arrow-left,
+.custom-arrow-right {
+  animation: fadeIn 0.6s ease forwards, pulse 2s infinite ease-in-out;
+}

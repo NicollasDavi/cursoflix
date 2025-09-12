@@ -54,7 +54,7 @@ const Header: React.FC<HeaderProps> = ({ onSearch }) => {
             {/* Avatar e Nome */}
             <Avatar alt="User Avatar" sx={{ bgcolor: "#fff", mr: 1 }} />
             <Typography variant="h6" noWrap>
-              Nicollas Davi 
+              Victor Anhaya
             </Typography>
 
             {/* Divider */}
